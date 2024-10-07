@@ -9,5 +9,5 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://127.0.0.1:8761/eureka # eureka ??? ??
+      defaultZone: http://127.0.0.1:8761/eureka # eureka 서버에 등록
 
