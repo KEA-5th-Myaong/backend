@@ -1,0 +1,14 @@
+server:
+  port: 0 # 포트가 랜덤으로 설정됨
+
+spring:
+  application:
+    name: interview-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
