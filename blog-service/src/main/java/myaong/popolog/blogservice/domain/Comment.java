@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Comment extends BaseEntity {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "comment_id")
