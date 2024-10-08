@@ -1,6 +1,8 @@
 spring:
   application:
     name: member-service
+  profiles:
+    active: local
 
 eureka:
   instance:

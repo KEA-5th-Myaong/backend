@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: interview-service
+  profiles:
+    active: local
 
 eureka:
   client:

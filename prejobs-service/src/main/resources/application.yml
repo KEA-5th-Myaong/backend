@@ -1,6 +1,8 @@
 spring:
   application:
     name: prejobs-service
+  profiles:
+    active: local
 
 eureka:
   instance:
