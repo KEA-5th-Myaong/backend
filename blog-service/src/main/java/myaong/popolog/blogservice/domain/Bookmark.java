@@ -13,11 +13,11 @@ public class Bookmark extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "bookmark_id", columnDefinition = "int unsigned")
+	@Column(name = "bookmark_id")
 	private Long id;
 
 	// 북마크한 회원 => 회원 정보 자체를 쓸 일은 없음(중복만 확인)
-	@Column(name = "member_id", columnDefinition = "int unsigned")
+	@Column(name = "member_id")
 	private Long memberId;
 
 	// 대상 포스트
