@@ -31,7 +31,7 @@ public class Portfolio extends BaseEntity {
 
 	// 관심 직군
 	@Column(name = "pre_job", nullable = false)
-	private String prefferedJob;
+	private String preferredJob;
 
 	// 전체 내용 JSON
 	@Lob

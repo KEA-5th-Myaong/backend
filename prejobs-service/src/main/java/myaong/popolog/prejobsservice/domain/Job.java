@@ -25,6 +25,6 @@ public class Job extends BaseEntity {
 	private String name;
 
 	// 순서
-	@Column(name = "index", nullable = false)
+	@Column(name = "`index`", nullable = false)
 	private Integer index;
 }
