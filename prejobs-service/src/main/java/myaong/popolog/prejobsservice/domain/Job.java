@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "`job`")
+@Table(name = "`job`",
+		uniqueConstraints = {@UniqueConstraint(columnNames = {"category_id", "job_name"}),
+				@UniqueConstraint(columnNames = {"category_id", "`index`"})})
 @Getter
 @Setter
 public class Job extends BaseEntity {

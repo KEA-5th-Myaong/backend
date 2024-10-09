@@ -5,7 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "`preferred_job`")
+@Table(name = "`preferred_job`",
+		uniqueConstraints = {@UniqueConstraint(columnNames = {"member_id", "job_id"})})
 @Getter
 @Setter
 public class PreferredJob extends BaseEntity {

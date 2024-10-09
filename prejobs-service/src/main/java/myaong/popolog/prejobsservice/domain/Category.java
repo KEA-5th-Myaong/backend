@@ -16,6 +16,6 @@ public class Category extends BaseEntity {
 	private Long id;
 
 	// 카테고리 이름
-	@Column(name = "category_name", nullable = false)
+	@Column(name = "category_name", nullable = false, unique = true)
 	private String name;
 }

@@ -15,6 +15,6 @@ public class Company extends BaseEntity {
 	@Column(name = "company_id")
 	private Long id;
 
-	@Column(name = "company_name", nullable = false)
+	@Column(name = "company_name", nullable = false, unique = true)
 	private String name;
 }

@@ -5,7 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "`follow`")
+@Table(name = "`follow`",
+		uniqueConstraints = {@UniqueConstraint(columnNames = {"following", "followed"})})
 @Getter
 @Setter
 public class Follow extends BaseEntity {
