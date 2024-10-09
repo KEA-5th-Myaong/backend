@@ -33,4 +33,7 @@ public class Comment extends BaseEntity {
 	@Lob
 	@Column(name = "content", nullable = false)
 	private String content;
+
+	@Column(name = "is_blinded")
+	private Boolean isBlinded;
 }

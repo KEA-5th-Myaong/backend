@@ -30,4 +30,7 @@ public class Post extends BaseEntity {
 	// 섬네일 주소
 	@Column(name = "thumbnail_url")
 	private String thumbnailUrl;
+
+	@Column(name = "is_blinded")
+	private Boolean isBlinded;
 }
