@@ -1,6 +1,8 @@
 spring:
   application:
     name: inquiry-service
+  profiles:
+    active: local
 
 eureka:
   instance:

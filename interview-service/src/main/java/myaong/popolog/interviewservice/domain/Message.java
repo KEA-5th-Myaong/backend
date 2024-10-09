@@ -1,0 +1,32 @@
+package myaong.popolog.interviewservice.domain;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import myaong.popolog.interviewservice.enums.InterviewRole;
+
+@Entity
+@Table(name = "`message`")
+@Getter
+@Setter
+public class Message extends BaseEntity {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "message_id")
+	private Long id;
+
+	// 대상 면접
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "interview_id", nullable = false)
+	private Interview interview;
+
+	// 메시지 역할
+	@Enumerated(EnumType.STRING)
+	@Column(name = "interview_role", nullable = false)
+	private InterviewRole role;
+
+	@Lob
+	@Column(name = "content", nullable = false)
+	private String content;
+}
