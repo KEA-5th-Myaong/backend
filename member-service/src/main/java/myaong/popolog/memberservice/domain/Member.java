@@ -3,6 +3,8 @@ package myaong.popolog.memberservice.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import myaong.popolog.memberservice.enums.Permission;
+import myaong.popolog.memberservice.enums.SocialType;
 
 import java.time.LocalDate;
 

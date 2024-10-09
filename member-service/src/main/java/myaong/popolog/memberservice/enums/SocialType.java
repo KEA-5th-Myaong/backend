@@ -1,4 +1,4 @@
-package myaong.popolog.memberservice.domain;
+package myaong.popolog.memberservice.enums;
 
 public enum SocialType {
 

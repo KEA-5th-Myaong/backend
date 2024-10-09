@@ -1,4 +1,4 @@
-package myaong.popolog.interviewservice.domain;
+package myaong.popolog.interviewservice.enums;
 
 public enum InterviewRole {
 
