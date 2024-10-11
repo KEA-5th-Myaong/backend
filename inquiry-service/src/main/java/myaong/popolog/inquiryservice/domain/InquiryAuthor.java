@@ -5,10 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "`member_profile`")
+@Table(name = "`inquiry_author`")
 @Getter
 @Setter
-public class MemberProfile extends BaseEntity {
+public class InquiryAuthor extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
