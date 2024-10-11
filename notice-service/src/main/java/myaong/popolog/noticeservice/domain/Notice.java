@@ -22,6 +22,6 @@ public class Notice extends BaseEntity {
 	private String content;
 
 	// 중요 여부
-	@Column(name = "is_secret", nullable = false)
-	private Boolean istSecret;
+	@Column(name = "is_important", nullable = false)
+	private Boolean isImportant;
 }

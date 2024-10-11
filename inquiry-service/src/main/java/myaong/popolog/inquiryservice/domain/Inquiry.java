@@ -28,5 +28,5 @@ public class Inquiry extends BaseEntity {
 
 	// 비밀글 여부
 	@Column(name = "is_secret", nullable = false)
-	private Boolean istSecret;
+	private Boolean isSecret;
 }
