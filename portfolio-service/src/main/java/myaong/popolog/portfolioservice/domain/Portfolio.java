@@ -1,13 +1,15 @@
 package myaong.popolog.portfolioservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "`portfolio`")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Portfolio extends BaseEntity {
 
 	@Id
@@ -16,7 +18,7 @@ public class Portfolio extends BaseEntity {
 	private Long id;
 
 	// 작성한 회원
-	@Column(name = "member_id", nullable = false)
+	@Column(name = "member_id", nullable = false, updatable = false)
 	private Long memberId;
 
 	// 대표 포트폴리오 여부
@@ -39,6 +41,15 @@ public class Portfolio extends BaseEntity {
 	private String content;
 
 	// 공유 키
-	@Column(name = "key", nullable = false)
+	@Column(name = "key", nullable = false, unique = true, updatable = false)
 	private String key;
+
+	@Builder
+	public Portfolio(Boolean isMain, String memo, String title, String preferredJob, String content) {
+		this.isMain = isMain;
+		this.memo = memo;
+		this.title = title;
+		this.preferredJob = preferredJob;
+		this.content = content;
+	}
 }

@@ -1,13 +1,14 @@
 package myaong.popolog.inquiryservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "`inquiry_author`")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class InquiryAuthor extends BaseEntity {
 
 	@Id

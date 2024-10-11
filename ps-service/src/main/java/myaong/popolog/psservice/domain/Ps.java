@@ -1,13 +1,15 @@
 package myaong.popolog.psservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "`ps`")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Ps extends BaseEntity {
 
 	@Id
@@ -16,7 +18,7 @@ public class Ps extends BaseEntity {
 	private Long id;
 
 	// 작성한 회원
-	@Column(name = "member_id", nullable = false)
+	@Column(name = "member_id", nullable = false, updatable = false)
 	private Long memberId;
 
 	@Column(name = "title", nullable = false)
@@ -35,4 +37,12 @@ public class Ps extends BaseEntity {
 	@Lob
 	@Column(name = "content", nullable = false)
 	private String content;
+
+	@Builder
+	public Ps(String title, String position, String reason, String content) {
+		this.title = title;
+		this.position = position;
+		this.reason = reason;
+		this.content = content;
+	}
 }

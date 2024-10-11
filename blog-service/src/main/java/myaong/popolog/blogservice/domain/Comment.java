@@ -1,13 +1,14 @@
 package myaong.popolog.blogservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "`comment`")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Comment extends BaseEntity {
 
 	@Id
@@ -17,17 +18,17 @@ public class Comment extends BaseEntity {
 
 	// 본 댓글이 달린 포스트
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "post_id", nullable = false)
+	@JoinColumn(name = "post_id", nullable = false, updatable = false)
 	private Post post;
 
 	// 댓글 작성자. 작성자 탈퇴 시 null
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "member_id")
+	@JoinColumn(name = "member_id", updatable = false)
 	private MemberProfile memberProfile;
 
 	// 답글인 경우, 본 답글이 달린 댓글. 댓글인 경우 null
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "parent_comment_id")
+	@JoinColumn(name = "parent_comment_id", updatable = false)
 	private Comment parentComment;
 
 	@Lob
@@ -36,4 +37,9 @@ public class Comment extends BaseEntity {
 
 	@Column(name = "is_blinded")
 	private Boolean isBlinded;
+
+	public Comment(String content, Boolean isBlinded) {
+		this.content = content;
+		this.isBlinded = isBlinded;
+	}
 }

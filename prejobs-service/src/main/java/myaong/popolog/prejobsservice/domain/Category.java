@@ -1,13 +1,14 @@
 package myaong.popolog.prejobsservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "`category`")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Category extends BaseEntity {
 
 	@Id
@@ -16,6 +17,6 @@ public class Category extends BaseEntity {
 	private Long id;
 
 	// 카테고리 이름
-	@Column(name = "category_name", nullable = false, unique = true)
+	@Column(name = "category_name", nullable = false, unique = true, updatable = false)
 	private String name;
 }

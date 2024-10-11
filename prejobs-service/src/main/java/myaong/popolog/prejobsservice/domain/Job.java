@@ -1,15 +1,17 @@
 package myaong.popolog.prejobsservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "`job`",
 		uniqueConstraints = {@UniqueConstraint(columnNames = {"category_id", "job_name"}),
 				@UniqueConstraint(columnNames = {"category_id", "`index`"})})
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Job extends BaseEntity {
 
 	@Id
@@ -19,7 +21,7 @@ public class Job extends BaseEntity {
 
 	// 카테고리
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "category_id", nullable = false)
+	@JoinColumn(name = "category_id", nullable = false, updatable = false)
 	private Category category;
 
 	// 직군 이름
@@ -29,4 +31,10 @@ public class Job extends BaseEntity {
 	// 순서
 	@Column(name = "`index`", nullable = false)
 	private Integer index;
+
+	@Builder
+	public Job(String name, Integer index) {
+		this.name = name;
+		this.index = index;
+	}
 }

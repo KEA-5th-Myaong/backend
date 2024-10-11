@@ -1,14 +1,15 @@
 package myaong.popolog.blogservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "`like`",
 		uniqueConstraints = {@UniqueConstraint(columnNames = {"member_id", "post_id"})})
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Like extends BaseEntity {
 
 	@Id
@@ -17,11 +18,11 @@ public class Like extends BaseEntity {
 	private Long id;
 
 	// 좋아요를 남긴 회원
-	@Column(name = "member_id", nullable = false)
+	@Column(name = "member_id", nullable = false, updatable = false)
 	private Long memberId;
 
 	// 대상 포스트
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "post_id", nullable = false)
+	@JoinColumn(name = "post_id", nullable = false, updatable = false)
 	private Post post;
 }

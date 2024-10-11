@@ -1,13 +1,15 @@
 package myaong.popolog.blogservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "`post`")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Post extends BaseEntity {
 
 	@Id
@@ -33,4 +35,12 @@ public class Post extends BaseEntity {
 
 	@Column(name = "is_blinded")
 	private Boolean isBlinded;
+
+	@Builder
+	public Post(String title, String content, String thumbnailUrl, Boolean isBlinded) {
+		this.title = title;
+		this.content = content;
+		this.thumbnailUrl = thumbnailUrl;
+		this.isBlinded = isBlinded;
+	}
 }

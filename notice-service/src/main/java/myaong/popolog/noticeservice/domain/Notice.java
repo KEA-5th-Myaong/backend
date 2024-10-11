@@ -1,13 +1,15 @@
 package myaong.popolog.noticeservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "`notice`")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Notice extends BaseEntity {
 
 	@Id
@@ -24,4 +26,11 @@ public class Notice extends BaseEntity {
 	// 중요 여부
 	@Column(name = "is_important", nullable = false)
 	private Boolean isImportant;
+
+	@Builder
+	public Notice(String title, String content, Boolean isImportant) {
+		this.title = title;
+		this.content = content;
+		this.isImportant = isImportant;
+	}
 }

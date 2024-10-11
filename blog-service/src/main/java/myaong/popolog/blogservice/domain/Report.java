@@ -1,15 +1,16 @@
 package myaong.popolog.blogservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 import myaong.popolog.blogservice.enums.ContentsType;
 
 @Entity
 @Table(name = "`report`",
 		uniqueConstraints = {@UniqueConstraint(columnNames = {"member_id", "contents_id", "contents_type"})})
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Report extends BaseEntity {
 
 	@Id

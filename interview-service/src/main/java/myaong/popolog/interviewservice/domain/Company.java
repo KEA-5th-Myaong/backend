@@ -1,13 +1,15 @@
 package myaong.popolog.interviewservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "`company`")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Company extends BaseEntity {
 
 	@Id
@@ -17,4 +19,9 @@ public class Company extends BaseEntity {
 
 	@Column(name = "company_name", nullable = false, unique = true)
 	private String name;
+
+	@Builder
+	public Company(String name) {
+		this.name = name;
+	}
 }

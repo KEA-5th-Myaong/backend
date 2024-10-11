@@ -1,8 +1,10 @@
 package myaong.popolog.memberservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 import myaong.popolog.memberservice.enums.Permission;
 import myaong.popolog.memberservice.enums.SocialType;
 
@@ -11,7 +13,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "`member`")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseEntity {
 
 	@Id
@@ -20,7 +22,7 @@ public class Member extends BaseEntity {
 	private Long id;
 
 	// 로그인 아이디
-	@Column(name = "username", nullable = false, unique = true)
+	@Column(name = "username", nullable = false, unique = true, updatable = false)
 	private String username;
 
 	@Column(name = "password")
@@ -28,7 +30,7 @@ public class Member extends BaseEntity {
 
 	// 소셜 로그인 타입
 	@Enumerated(EnumType.STRING)
-	@Column(name = "social_type", nullable = false)
+	@Column(name = "social_type", nullable = false, updatable = false)
 	private SocialType socialType;
 
 	// 본명
@@ -58,4 +60,16 @@ public class Member extends BaseEntity {
 	// 정지 해제일. (오늘 날짜 < 정지 해제일)이면 정지된 회원
 	@Column(name = "unban_date", nullable = false)
 	private LocalDate unbanDate;
+
+	@Builder
+	public Member(String password, String name, String nickname, String email, Permission permission, String profilePicUrl, Integer countAttempt, LocalDate unbanDate) {
+		this.password = password;
+		this.name = name;
+		this.nickname = nickname;
+		this.email = email;
+		this.permission = permission;
+		this.profilePicUrl = profilePicUrl;
+		this.countAttempt = countAttempt;
+		this.unbanDate = unbanDate;
+	}
 }

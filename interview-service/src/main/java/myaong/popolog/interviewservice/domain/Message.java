@@ -1,14 +1,16 @@
 package myaong.popolog.interviewservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 import myaong.popolog.interviewservice.enums.InterviewRole;
 
 @Entity
 @Table(name = "`message`")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Message extends BaseEntity {
 
 	@Id
@@ -18,15 +20,20 @@ public class Message extends BaseEntity {
 
 	// 대상 면접
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "interview_id", nullable = false)
+	@JoinColumn(name = "interview_id", nullable = false, updatable = false)
 	private Interview interview;
 
 	// 메시지 역할
 	@Enumerated(EnumType.STRING)
-	@Column(name = "interview_role", nullable = false)
+	@Column(name = "interview_role", nullable = false, updatable = false)
 	private InterviewRole role;
 
 	@Lob
 	@Column(name = "content", nullable = false)
 	private String content;
+
+	@Builder
+	public Message(String content) {
+		this.content = content;
+	}
 }

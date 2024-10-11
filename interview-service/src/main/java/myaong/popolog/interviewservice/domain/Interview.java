@@ -1,13 +1,14 @@
 package myaong.popolog.interviewservice.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "`interview`")
 @Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Interview extends BaseEntity {
 
 	@Id
@@ -16,11 +17,11 @@ public class Interview extends BaseEntity {
 	private Long id;
 
 	// 생성한 회원
-	@Column(name = "member_id", nullable = false)
+	@Column(name = "member_id", nullable = false, updatable = false)
 	private Long memberId;
 
 	// 대상 기업
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "company_id", nullable = false)
+	@JoinColumn(name = "company_id", nullable = false, updatable = false)
 	private Company company;
 }
