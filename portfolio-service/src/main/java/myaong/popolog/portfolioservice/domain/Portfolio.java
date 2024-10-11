@@ -41,7 +41,7 @@ public class Portfolio extends BaseEntity {
 	private String content;
 
 	// 공유 키
-	@Column(name = "key", nullable = false, unique = true, updatable = false)
+	@Column(name = "`key`", nullable = false, unique = true, updatable = false)
 	private String key;
 
 	@Builder
