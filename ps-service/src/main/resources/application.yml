@@ -1,6 +1,8 @@
 spring:
   application:
     name: ps-service
+  profiles:
+    active: local
 
 eureka:
   instance:
