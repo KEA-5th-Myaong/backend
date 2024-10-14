@@ -12,7 +12,10 @@ public enum ApiCode {
 	INVALID_DATA(HttpStatus.BAD_REQUEST, "COMMON_4000", "Request data missing or invalid"),
 	METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "COMMON_4050", "Method not allowed"),
 	INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON_5000", "Internal Server Error"),
-	DB_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON_5001", "DB Error");
+	DB_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON_5001", "DB Error"),
+
+	NOTICE_NOT_FOUND(HttpStatus.NOT_FOUND, "NOTICE", "존재하지 않는 공지사항입니다."),
+	;
 
 	private final HttpStatus httpStatus;
 	private final String code;

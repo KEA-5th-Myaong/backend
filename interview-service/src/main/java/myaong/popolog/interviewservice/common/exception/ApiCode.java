@@ -13,7 +13,12 @@ public enum ApiCode {
 	READ_ONLY_ACCESS(HttpStatus.FORBIDDEN, "COMMON_4031", "You can only read"),
 	METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "COMMON_4050", "Method not allowed"),
 	INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON_5000", "Internal Server Error"),
-	DB_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON_5001", "DB Error");
+	DB_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON_5001", "DB Error"),
+
+	COMPANY_NOT_FOUND(HttpStatus.NOT_FOUND, "COMPANY_4040", "면접을 생성할 수 없는 기업입니다."),
+
+	INTERVIEW_NOT_FOUND(HttpStatus.NOT_FOUND, "INTERVIEW_4040", "존재하지 않는 면접 기록입니다."),
+	;
 
 	private final HttpStatus httpStatus;
 	private final String code;
