@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "`inquiry`")
@@ -31,6 +32,10 @@ public class Inquiry extends BaseEntity {
 	// 비밀글 여부
 	@Column(name = "is_secret", nullable = false)
 	private Boolean isSecret;
+
+	@Setter
+	@OneToOne(mappedBy = "inquiry", cascade = CascadeType.ALL, orphanRemoval = true)
+	private InquiryReply inquiryReply;
 
 	@Builder
 	public Inquiry(Long memberId, String title, String content, Boolean isSecret) {

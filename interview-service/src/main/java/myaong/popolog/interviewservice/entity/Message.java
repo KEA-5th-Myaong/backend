@@ -37,5 +37,7 @@ public class Message extends BaseEntity {
 		this.interview = interview;
 		this.role = interviewRole;
 		this.content = content;
+
+		interview.getMessages().add(this);
 	}
 }

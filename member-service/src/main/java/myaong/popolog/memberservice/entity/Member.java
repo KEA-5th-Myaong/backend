@@ -9,6 +9,8 @@ import myaong.popolog.memberservice.enums.Permission;
 import myaong.popolog.memberservice.enums.SocialType;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "`member`")
@@ -60,6 +62,14 @@ public class Member extends BaseEntity {
 	// 정지 해제일. (오늘 날짜 < 정지 해제일)이면 정지된 회원
 	@Column(name = "unban_date", nullable = false)
 	private LocalDate unbanDate;
+
+	// 내가 팔로우하는 사람 목록
+	@OneToMany(mappedBy = "following", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Follow> followings = new ArrayList<>();
+
+	// 나를 팔로우하는 사람 목록
+	@OneToMany(mappedBy = "followed", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Follow> followers = new ArrayList<>();
 
 	@Builder
 	public Member(String username, String password, SocialType socialType, String name, String nickname, String email,

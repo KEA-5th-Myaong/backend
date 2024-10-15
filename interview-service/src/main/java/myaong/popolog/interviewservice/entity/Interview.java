@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "`interview`")
 @Getter
@@ -25,6 +28,9 @@ public class Interview extends BaseEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "company_id", nullable = false, updatable = false)
 	private Company company;
+
+	@OneToMany(mappedBy = "interview", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Message> messages = new ArrayList<>();
 
 	@Builder
 	public Interview(Long memberId, Company company) {

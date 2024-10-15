@@ -32,5 +32,8 @@ public class Follow extends BaseEntity {
 	public Follow(Member following, Member followed) {
 		this.following = following;
 		this.followed = followed;
+
+		following.getFollowings().add(this);
+		followed.getFollowers().add(this);
 	}
 }

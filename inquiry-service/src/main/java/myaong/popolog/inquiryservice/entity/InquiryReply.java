@@ -35,5 +35,7 @@ public class InquiryReply extends BaseEntity {
 		this.inquiry = inquiry;
 		this.memberId = memberId;
 		this.content = content;
+
+		inquiry.setInquiryReply(this);
 	}
 }

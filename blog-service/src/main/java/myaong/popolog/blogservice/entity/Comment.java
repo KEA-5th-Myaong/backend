@@ -46,5 +46,7 @@ public class Comment extends BaseEntity {
 		this.parentComment = parentComment;
 		this.content = content;
 		this.isBlinded = isBlinded;
+
+		post.getComments().add(this);
 	}
 }
