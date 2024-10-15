@@ -1,11 +1,13 @@
 package myaong.popolog.blogservice.common.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
+import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -73,5 +75,22 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 	private ResponseEntity<Object> handleExceptionInternal (ApiCode apiCode, Object errors) {
 		return ResponseEntity.status(apiCode.getHttpStatus()).body(ApiResponse.onFailure(apiCode, errors));
+	}
+
+	@Override
+	protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatusCode statusCode, WebRequest request) {
+
+		String message;
+		if (body == null)
+			if (ex instanceof ErrorResponse errorResponse)
+				message = errorResponse.updateAndGetBody(this.getMessageSource(), LocaleContextHolder.getLocale()).getDetail();
+			else
+				message = "Internal server error";
+		else
+			message = ((ErrorResponse) body).getDetailMessageCode();
+
+		body = ApiResponse.onFailure(statusCode.value(), message);
+
+		return ResponseEntity.status(statusCode.value()).body(body);
 	}
 }

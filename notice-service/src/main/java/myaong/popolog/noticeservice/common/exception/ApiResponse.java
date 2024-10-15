@@ -33,4 +33,9 @@ public class ApiResponse<T> {
 	public static <T> ApiResponse<T> onFailure(ApiCode status, T errors) {
 		return new ApiResponse<>(false, status.getCode(), status.getMessage(), errors);
 	}
+
+	// handleExceptionInternal override에서 사용
+	public static <T> ApiResponse<T> onFailure(int code, String message) {
+		return new ApiResponse<>(false, "COMMON_"+code+"0", message, null);
+	}
 }
