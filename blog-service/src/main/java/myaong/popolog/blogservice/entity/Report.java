@@ -2,6 +2,7 @@ package myaong.popolog.blogservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import myaong.popolog.blogservice.enums.ContentsType;
@@ -30,4 +31,11 @@ public class Report extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "contents_type", nullable = false)
 	private ContentsType contentsType;
+
+	@Builder
+	public Report(Long memberId, Long contentsId, ContentsType contentsType) {
+		this.memberId = memberId;
+		this.contentsId = contentsId;
+		this.contentsType = contentsType;
+	}
 }

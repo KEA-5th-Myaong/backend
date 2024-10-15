@@ -3,6 +3,7 @@ package myaong.popolog.blogservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,4 +27,10 @@ public class Bookmark extends BaseEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "post_id", updatable = false)
 	private Post post;
+
+	@Builder
+	public Bookmark(Long memberId, Post post) {
+		this.memberId = memberId;
+		this.post = post;
+	}
 }

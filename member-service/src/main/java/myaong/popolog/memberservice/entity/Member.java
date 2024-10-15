@@ -62,8 +62,11 @@ public class Member extends BaseEntity {
 	private LocalDate unbanDate;
 
 	@Builder
-	public Member(String password, String name, String nickname, String email, Permission permission, String profilePicUrl, Integer countAttempt, LocalDate unbanDate) {
+	public Member(String username, String password, SocialType socialType, String name, String nickname, String email,
+				  Permission permission, String profilePicUrl, Integer countAttempt, LocalDate unbanDate) {
+		this.username = username;
 		this.password = password;
+		this.socialType = socialType;
 		this.name = name;
 		this.nickname = nickname;
 		this.email = email;

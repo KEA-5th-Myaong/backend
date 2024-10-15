@@ -2,6 +2,7 @@ package myaong.popolog.memberservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,4 +27,10 @@ public class Follow extends BaseEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "followed", nullable = false, updatable = false)
 	private Member followed;
+
+	@Builder
+	public Follow(Member following, Member followed) {
+		this.following = following;
+		this.followed = followed;
+	}
 }

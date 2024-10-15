@@ -2,6 +2,7 @@ package myaong.popolog.blogservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -35,10 +36,14 @@ public class Comment extends BaseEntity {
 	@Column(name = "content", nullable = false)
 	private String content;
 
-	@Column(name = "is_blinded")
+	@Column(name = "is_blinded", nullable = false)
 	private Boolean isBlinded;
 
-	public Comment(String content, Boolean isBlinded) {
+	@Builder
+	public Comment(Post post, MemberProfile memberProfile, Comment parentComment, String content, Boolean isBlinded) {
+		this.post = post;
+		this.memberProfile = memberProfile;
+		this.parentComment = parentComment;
 		this.content = content;
 		this.isBlinded = isBlinded;
 	}

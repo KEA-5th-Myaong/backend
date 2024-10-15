@@ -33,7 +33,8 @@ public class Job extends BaseEntity {
 	private Integer index;
 
 	@Builder
-	public Job(String name, Integer index) {
+	public Job(Category category, String name, Integer index) {
+		this.category = category;
 		this.name = name;
 		this.index = index;
 	}

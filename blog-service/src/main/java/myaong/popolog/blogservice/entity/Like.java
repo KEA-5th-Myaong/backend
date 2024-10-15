@@ -2,6 +2,7 @@ package myaong.popolog.blogservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,4 +26,10 @@ public class Like extends BaseEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "post_id", nullable = false, updatable = false)
 	private Post post;
+
+	@Builder
+	public Like(Long memberId, Post post) {
+		this.memberId = memberId;
+		this.post = post;
+	}
 }

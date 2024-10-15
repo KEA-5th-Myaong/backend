@@ -33,7 +33,9 @@ public class Message extends BaseEntity {
 	private String content;
 
 	@Builder
-	public Message(String content) {
+	public Message(Interview interview, InterviewRole interviewRole, String content) {
+		this.interview = interview;
+		this.role = interviewRole;
 		this.content = content;
 	}
 }

@@ -2,6 +2,7 @@ package myaong.popolog.inquiryservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,4 +20,9 @@ public class InquiryAuthor extends BaseEntity {
 	// 글 조회 시 로그인 아이디 표시
 	@Column(name = "username", nullable = false)
 	private String username;
+
+	@Builder
+	public InquiryAuthor(String username) {
+		this.username = username;
+	}
 }

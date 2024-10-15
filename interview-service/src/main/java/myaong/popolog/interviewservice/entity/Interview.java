@@ -2,6 +2,7 @@ package myaong.popolog.interviewservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -24,4 +25,10 @@ public class Interview extends BaseEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "company_id", nullable = false, updatable = false)
 	private Company company;
+
+	@Builder
+	public Interview(Long memberId, Company company) {
+		this.memberId = memberId;
+		this.company = company;
+	}
 }

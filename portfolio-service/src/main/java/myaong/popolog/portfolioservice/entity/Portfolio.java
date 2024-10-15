@@ -45,11 +45,13 @@ public class Portfolio extends BaseEntity {
 	private String key;
 
 	@Builder
-	public Portfolio(Boolean isMain, String memo, String title, String preferredJob, String content) {
+	public Portfolio(Long memberId, Boolean isMain, String memo, String title, String preferredJob, String content, String key) {
+		this.memberId = memberId;
 		this.isMain = isMain;
 		this.memo = memo;
 		this.title = title;
 		this.preferredJob = preferredJob;
 		this.content = content;
+		this.key = key;
 	}
 }

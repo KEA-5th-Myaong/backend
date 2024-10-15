@@ -33,11 +33,12 @@ public class Post extends BaseEntity {
 	@Column(name = "thumbnail_url")
 	private String thumbnailUrl;
 
-	@Column(name = "is_blinded")
+	@Column(name = "is_blinded", nullable = false)
 	private Boolean isBlinded;
 
 	@Builder
-	public Post(String title, String content, String thumbnailUrl, Boolean isBlinded) {
+	public Post(MemberProfile memberProfile, String title, String content, String thumbnailUrl, Boolean isBlinded) {
+		this.memberProfile = memberProfile;
 		this.title = title;
 		this.content = content;
 		this.thumbnailUrl = thumbnailUrl;

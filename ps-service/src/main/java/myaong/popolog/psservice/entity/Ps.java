@@ -39,7 +39,8 @@ public class Ps extends BaseEntity {
 	private String content;
 
 	@Builder
-	public Ps(String title, String position, String reason, String content) {
+	public Ps(Long memberId, String title, String position, String reason, String content) {
+		this.memberId = memberId;
 		this.title = title;
 		this.position = position;
 		this.reason = reason;

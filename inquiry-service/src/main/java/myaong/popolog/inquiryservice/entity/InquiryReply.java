@@ -2,6 +2,7 @@ package myaong.popolog.inquiryservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +18,7 @@ public class InquiryReply extends BaseEntity {
 	private Long id;
 
 	// 부모 문의
-	@ManyToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "inquiry_id", nullable = false, unique = true, updatable = false)
 	private Inquiry inquiry;
 
@@ -28,4 +29,11 @@ public class InquiryReply extends BaseEntity {
 	@Lob
 	@Column(name = "content", nullable = false, updatable = false)
 	private String content;
+
+	@Builder
+	public InquiryReply(Inquiry inquiry, Long memberId, String content) {
+		this.inquiry = inquiry;
+		this.memberId = memberId;
+		this.content = content;
+	}
 }

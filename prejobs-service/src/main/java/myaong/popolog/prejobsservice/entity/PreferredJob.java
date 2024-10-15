@@ -2,6 +2,7 @@ package myaong.popolog.prejobsservice.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,10 +20,16 @@ public class PreferredJob extends BaseEntity {
 
 	// 회원 아이디
 	@Column(name = "member_id", nullable = false, updatable = false)
-	private Long member_id;
+	private Long memberId;
 
 	// 직군
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "job_id", nullable = false, updatable = false)
 	private Job job;
+
+	@Builder
+	public PreferredJob(Long memberId, Job job) {
+		this.memberId = memberId;
+		this.job = job;
+	}
 }
